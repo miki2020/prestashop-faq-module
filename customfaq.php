@@ -159,8 +159,10 @@ class Customfaq extends Module
 		// Get default language
 		$default_lang = (int)Configuration::get('PS_LANG_DEFAULT');
 		 $content_fields = array();
-		 
-		 $content = unserialize(Configuration::get('FAQMODULE_CONTENT'));
+		 try{
+			$content = unserialize(Configuration::get('FAQMODULE_CONTENT'));
+			}	catch (Exception $e) {    echo 'Caught exception: ',  $e->getMessage(), "\n";}
+		
 		 
 		 //echo '<pre>'; print_r( $content);echo '</pre>'; //die();
 		 //getFields list from configuration
